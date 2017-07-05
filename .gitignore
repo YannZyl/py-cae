@@ -1,7 +1,7 @@
-data/aligned_dataset/*
-data/images/*
-data/output/*
-data/sample/*
+data/aligned_dataset/
+data/images/
+data/output/
+data/sample/
 data/train.tfrecords
 
 model/checkpoint/*
@@ -22,7 +22,6 @@ dist/
 downloads/
 eggs/
 .eggs/
-lib/
 lib64/
 parts/
 sdist/

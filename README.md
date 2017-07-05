@@ -1,7 +1,7 @@
 # CAE/GCN Face Synthesize Application
 
-CAE/GCN is a good framework for face synthesize and data arguement. It has been originally introduced in this research [article](https://arxiv.org/abs/1705.02887)
-
+CAE/GCN is a good framework for face synthesize and data arguement. It has been originally introduced in this research [GCN article](https://arxiv.org/abs/1705.02887)
+[pix2pix article](https://arxiv.org/pdf/1611.07004v1.pdf)
 This repository contains a tensorflow implementation of GCN.
 
 ## Dependences
