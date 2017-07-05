@@ -2,7 +2,7 @@
 
 CAE/GCN is a good framework for face synthesize and data arguement. It has been originally introduced in this research [GCN article](https://arxiv.org/abs/1705.02887)
 [pix2pix article](https://arxiv.org/pdf/1611.07004v1.pdf)
-This repository contains a tensorflow implementation of GCN.
+This repository contains a tensorflow implementation of CAE.
 
 ## Dependences
 
@@ -50,7 +50,7 @@ python main.py \
 
 ## Examples
 ### 1st column(emotion) + 2nd column(emotion) ==>(synthesize) 3rd(new emotion)
-![](gcn_examples1.png "GCN examples")
+![](cae_examples1.png "CAE examples")
 ### 1st/2nd ground true label(not appear in training set), 3rd synthesized emotion(new emotion)
-![](gcn_examples2.png "GCN examples")
+![](cae_examples2.png "CAE examples")
 

@@ -5,7 +5,7 @@ import tensorflow as tf
 from layers import *
 from lib.inputs import data_loader
 
-class GCN:
+class CAE:
     def __init__(self, args):
         self.p_dim = args.person_nums
         self.e_dim = args.emotion_nums
@@ -164,25 +164,9 @@ class GCN:
     def discriminator(self, inputs, person, emotion, transform, reuse=None):
         with tf.variable_scope('discriminator', reuse=reuse):
             n_layers = 3
-            ndf = 64
-            # branch1: person
-            x_person = add_fc(person, 256, activation_fn=None)
-            # branch2: emotion
-            x_emotion = add_fc(emotion, 256, activation_fn=None)
-            # branch3: transform
-            x_transform = add_fc(transform, 128, activation_fn=None)
-            # merged 3 branches
-            x = tf.concat([x_person,x_emotion,x_transform], axis=1)
-            x = add_lrelu(x, 0.2)
-            
-            _, h, w, c = inputs.get_shape().as_list()
-            x_2 = add_fc(x, h*w, activation_fn=None)
-            x_2 = add_lrelu(x_2, 0.2)
-            x_2 = tf.reshape(x_2, [-1,h,w,1])
-            x = tf.concat([inputs,x_2], axis=3)
-            
+            ndf = 64        
             # layer_1: [batch, 173, 173, in_channels] => [batch, 86, 86, ndf]
-            x = add_conv2d(x, ndf, 3, 2, 'VALID', activation_fn=None)
+            x = add_conv2d(inputs, ndf, 3, 2, 'VALID', activation_fn=None)
             x = add_lrelu(x, 0.2)
             
             # layer_2: [batch, 86, 86, ndf] => [batch, 43, 43, ndf * 2]
