@@ -1,3 +1,10 @@
+data/aligned_dataset/*
+data/images/*
+data/output/*
+data/sample/*
+data/train.tfrecords
+
+model/checkpoint/*
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

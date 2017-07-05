@@ -1,0 +1,17 @@
+(dp0
+S'surprise'
+p1
+I4
+sS'angry'
+p2
+I0
+sS'happy'
+p3
+I1
+sS'neutral'
+p4
+I2
+sS'sad'
+p5
+I3
+s.
