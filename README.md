@@ -1,8 +1,8 @@
 # CAE/GCN Face Synthesize Application
 
-CAE/GCN is a good framework for face synthesize and data arguement. It has been originally introduced in this research [GCN article](https://arxiv.org/abs/1705.02887)
-[pix2pix article](https://arxiv.org/pdf/1611.07004v1.pdf)
-This repository contains a tensorflow implementation of CAE.
+CAE/GCN is a good framework for face synthesize and data arguement. It has been originally introduced in this research `GCN`[article](https://arxiv.org/abs/1705.02887) & `Pix2Pix`
+[article](https://arxiv.org/pdf/1611.07004v1.pdf)
+This repository contains a tensorflow implementation of Adversarial-CAE.
 
 ## Dependences
 
@@ -45,12 +45,14 @@ At the test/sample time, you just need run
 python main.py \
 	--emotion_nums EMOTION_NUMS \
 	--person_nums PERSON_NUMS \
-	--transform_nums TRAINSFORM_NUMS
+	--transform_nums TRAINSFORM_NUMS \
+	--sampling \
+	--sample_nums SAMPLE_NUMS
 ```
 
 ## Examples
-### 1st column(emotion) + 2nd column(emotion) ==>(synthesize) 3rd(new emotion)
+### 1st/2nd ground true label(appear in training set)==>3rd synthesized emotion(new emotion)
 ![](cae_examples1.png "CAE examples")
-### 1st/2nd ground true label(not appear in training set), 3rd synthesized emotion(new emotion)
+### 1st/2nd ground true label(not appear in training set)==>3rd synthesized emotion(new emotion)
 ![](cae_examples2.png "CAE examples")
 
