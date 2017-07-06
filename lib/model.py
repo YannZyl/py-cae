@@ -24,7 +24,7 @@ class CAE:
         self.lr_decay_steps = args.lr_decay_steps
         
         self.loss_gan_weight = 0.01
-        self.loss_l1_weight = 0.99
+        self.loss_l1_weight = 10.00
         self.lambda1 = 1.0
         self.lambda2 = 1.0
         self.build_model()
@@ -41,8 +41,8 @@ class CAE:
         # network outputs 
         with tf.name_scope('train_step'):
             self.gen_image = self.generator(self.x_p, self.x_e, self.x_t)
-            predict_real, pid_real, eid_real, tid_real = self.discriminator(self.y, self.x_p, self.x_e, self.x_t)
-            predict_fake, pid_fake, eid_fake, tid_fake = self.discriminator(self.gen_image, self.x_p, self.x_e, self.x_t, reuse=True)          
+            predict_real, pid_real, eid_real, tid_real = self.discriminator(self.y)
+            predict_fake, pid_fake, eid_fake, tid_fake = self.discriminator(self.gen_image, reuse=True)          
         # network outputs 
         with tf.name_scope('sample_step'):
             self.s_p = tf.placeholder(tf.float32, [None,self.p_dim])
@@ -161,7 +161,7 @@ class CAE:
             return add_tanh(x)
 
     # discriminator(pix2pix net)
-    def discriminator(self, inputs, person, emotion, transform, reuse=None):
+    def discriminator(self, inputs, reuse=None):
         with tf.variable_scope('discriminator', reuse=reuse):
             n_layers = 3
             ndf = 64        

@@ -68,8 +68,8 @@ class Trainer:
                     self.sample_internal(step, interpolate=False)
                     self.cae.saver.save(self.cae.session, 'model/checkpoint/cae.ckpt')
                 if step % self.cae.lr_decay_steps == 0 and step !=0:
-                    self.cae.session.run(self.cae.lr_update)
-                    #pass
+                    #self.cae.session.run(self.cae.lr_update)
+                    pass
                 
             coord.request_stop()
             coord.join(thread)
