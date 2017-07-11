@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import division
+import cv2
 import numpy as np
 import tensorflow as tf
 from layers import *
@@ -12,10 +13,6 @@ class CAE:
         self.t_dim = args.transform_nums
         self.x_dim = args.image_scale 
         self.batch_size = args.batch_size
-        self.euclidean_loss_weights = args.euclidean_loss_weights
-        self.person_loss_weights = args.person_loss_weights
-        self.emotion_loss_weights = args.emotion_loss_weights
-        self.transform_loss_weights = args.transform_loss_weights
         self.learning_rate = args.learning_rate
         self.lr_low_boundary = 1e-5
         self.beta1 = args.beta1
@@ -23,10 +20,10 @@ class CAE:
         self.epsilon = args.epsilon
         self.lr_decay_steps = args.lr_decay_steps
         
-        self.loss_gan_weight = 0.01
-        self.loss_l1_weight = 10.00
-        self.lambda1 = 1.0
-        self.lambda2 = 1.0
+        self.loss_gan_weight = args.gan_loss_weights
+        self.loss_l1_weight = args.l1_loss_weights
+        self.lambda1 = args.lambda1
+        self.lambda2 = args.lambda2
         self.build_model()
         
     def build_model(self):
@@ -110,7 +107,7 @@ class CAE:
         # if use interpolate via the second person, build fusion condition 
         if interpolate:
             # second people condition
-	    scale_ratios = [0.2, 0.4, 0.6, 0.8, 1.0]
+	    scale_ratios = [x/10.0 for x in range(1,11)]
             x_e2 = [0] * self.e_dim; x_e2[emotion2] = 1
 	    for ratio in scale_ratios:    
             	# fusion condition

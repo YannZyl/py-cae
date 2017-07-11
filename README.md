@@ -1,6 +1,6 @@
-# CAE/GCN Face Synthesize Application
+# Adversarial-CAE Face Synthesize Application
 
-CAE/GCN is a good framework for face synthesize and data arguement. It has been originally introduced in this research `GCN`[article](https://arxiv.org/abs/1705.02887) & `Pix2Pix`
+Adversarial-CAE  is a good framework for face synthesize and data arguement. It has been originally introduced in this research `GCN`[article](https://arxiv.org/abs/1705.02887) & `Pix2Pix`
 [article](https://arxiv.org/pdf/1611.07004v1.pdf)
 This repository contains a tensorflow implementation of Adversarial-CAE.
 
@@ -16,18 +16,12 @@ For the first time to run, you should prepare data first, run command:
 ```bash
 python main.py \
 	--generate_data \
-	--emotion_nums EMOTION_NUMS \
-	--person_nums PERSON_NUMS \
-	--transform_nums TRAINSFORM_NUMS \
 	--dataset_dir DATASET_DIR \
 ```
 It will generate data from dataset directory, and if you want to use extra data/two dataset
 ```bash
 python main.py \
 	--generate_data \
-	--emotion_nums EMOTION_NUMS \
-	--person_nums PERSON_NUMS \
-	--transform_nums TRAINSFORM_NUMS \
 	--use_extra_data \
 	--dataset_dir DATASET_DIR \
 	--extra_data_dir EXTRA_DATA_DIR
@@ -42,12 +36,7 @@ When second run main.py, maybe data file is exist, please remove params
 ```
 At the test/sample time, you just need run
 ```bash
-python main.py \
-	--emotion_nums EMOTION_NUMS \
-	--person_nums PERSON_NUMS \
-	--transform_nums TRAINSFORM_NUMS \
-	--sampling \
-	--sample_nums SAMPLE_NUMS
+python main.py --sampling
 ```
 
 ## Examples
