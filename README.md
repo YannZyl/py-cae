@@ -33,7 +33,6 @@ If your self dataset's quality is not so good, you can perform face alignment to
 When second run main.py, maybe data file is exist, please remove param
 ```bash
 --generate_data && --dataset_dir DATASET_DIR 
-python main.py
 ```
 At the test/sample time, you just need run
 ```bash
